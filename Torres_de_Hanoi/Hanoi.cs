@@ -9,7 +9,7 @@ namespace Torres_de_Hanoi
     class Hanoi
     {
         /*TODO: Implementar métodos*/
-        public void mover_disco(Pila a, Pila b)
+        public bool mover_disco(Pila a, Pila b)
         {
 
             if (a.isEmpty() == false ) {
@@ -19,62 +19,55 @@ namespace Torres_de_Hanoi
                     if (a.Elementos[a.Top].Tamano < b.Elementos[b.Top].Tamano)
                     {
                         b.push(a.pop());
+                        return true;
                     }
-                    else { a.push(b.pop(); }
+                    else { a.push(b.pop());
+                        return true;
+                    }
                 }
-                else { b.push(a.pop(); }                   
+                else { b.push(a.pop());
+                    return true;
+                }                   
             }
             else if (b.isEmpty() == false)
             {
+                a.push(b.pop());
 
-                if (a.isEmpty() == false)
-                {
-
-                    if (b.Elementos[b.Top].Tamano < a.Elementos[a.Top].Tamano)
-                    {
-                        a.push(b.pop());
-                    }
-                }
-                else { a.push(b.pop(); }
+                return true;
             }
+
+            return false;
+           
 
         }
 
         public int iterativo(int n, Pila ini, Pila fin, Pila aux)
         {
             int m = 0;
-            if(n%2 == 0)
-            {
-                for (int i = 0; i < Math.Pow(2,n)-1; i++)
-                {
-                    mover_disco(ini, fin);
-                    m++;
-                    i++; //cada movimiento cuenta
-                    mover_disco(ini, aux);
-                    m++;
-                    i++;
-                    mover_disco(aux, fin);
-                    m++;
-                }
-               
+            int totalMov = (1 << n) - 1;
 
-            }
-            else if (n % 2 != 0)
+            if (n % 2 == 0)
             {
-                for (int i = 0; i < Math.Pow(2, n) - 1; i++)
+                while (m < totalMov)
                 {
-                    mover_disco(ini, aux);
-                    m++;
-                    i++; //cada movimiento cuenta
-                    mover_disco(ini, fin);
-                    m++;
-                    i++;
-                    mover_disco(aux, fin);
-                    m++;
+                    if (mover_disco(ini, fin)) m++;
+                    if (m < totalMov && mover_disco(ini, aux)) m++;
+                    if (m < totalMov && mover_disco(aux, fin)) m++;
                 }
             }
+            else
+            {
+                while (m < totalMov)
+                {
+                    if (mover_disco(ini, aux)) m++;
+                    if (m < totalMov && mover_disco(ini, fin)) m++;
+                    if (m < totalMov && mover_disco(aux, fin)) m++;
+                }
+            }
+
             return m;
         }
+
 
     }
 }
