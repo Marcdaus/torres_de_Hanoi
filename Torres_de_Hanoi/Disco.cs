@@ -10,6 +10,11 @@ namespace Torres_de_Hanoi
     {
 
         public int Valor { get; set; }
+        // Constructor: se ejecuta al hacer 'new Disco(5)'
+        public Disco(int valor)
+        {
+            Valor = valor;
+        }
 
     }
 }
