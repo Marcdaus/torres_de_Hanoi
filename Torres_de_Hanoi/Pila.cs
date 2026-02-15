@@ -12,26 +12,32 @@ namespace Torres_de_Hanoi
         public int Size { get; set; }
         public int Top { get; set; }
         
-        public Disco[] Elementos { get; set; };
+        public Disco[] Elementos { get; set; }
 
         /* TODO: Implementar métodos */
-        public Pila(int top, Disco[] discos )
+        public Pila(int cant_max )
         {
-            Top.this = top;
-            Elementos = discos; 
-            Size = Elementos.Length;
+            this.Top = -1; //indicie del ultimo disco en la pila si es -1 no hay ningun disco
+            this.Elementos = new Disco[cant_max] ; //definimos como de grande es la pila
+            this.Size = 0; //numero de discos en la pila
         }
 
         public void push(Disco d)
-        {
-
+        {//Añadir nuevo disco
+            Elementos.Add(d);
+            //actualizar tamanos
+            Top++;
+            Size++;
         }
 
         public Disco pop()
-        {
-            Elementos[top] = null;
-            Size-1
-            return null;
+        {//sacar disco
+            Disco d = Elementos[Top]; //guardamos disco
+            Elementos[Top]) = null; //Eliminamos disco
+            //actualizar tamanos
+            Size--;
+            Top--
+            return d; //devolvemos disco
         }                
 
         public bool isEmpty()
@@ -39,7 +45,7 @@ namespace Torres_de_Hanoi
             if (Size == 0)
             {
                 return true;
-        }else
+            }else
             {
                 return false;
             }
@@ -48,4 +54,4 @@ namespace Torres_de_Hanoi
 
     }
 }
-Pila pila1 { disco.tamano, Disco  }
+
