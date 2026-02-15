@@ -20,8 +20,22 @@ namespace Torres_de_Hanoi
                     {
                         b.push(a.pop());
                     }
+                    else { a.push(b.pop(); }
                 }
                 else { b.push(a.pop(); }                   
+            }
+            else if (b.isEmpty() == false)
+            {
+
+                if (a.isEmpty() == false)
+                {
+
+                    if (b.Elementos[b.Top].Tamano < a.Elementos[a.Top].Tamano)
+                    {
+                        a.push(b.pop());
+                    }
+                }
+                else { a.push(b.pop(); }
             }
 
         }
