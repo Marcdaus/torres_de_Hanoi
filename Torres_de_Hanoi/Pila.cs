@@ -23,10 +23,9 @@ namespace Torres_de_Hanoi
         }
 
         public void push(Disco d)
-        {//Añadir nuevo disco
-            Elementos.Add(d);
-            //actualizar tamanos
+        {
             Top++;
+            Elementos[Top] = d; //Añadir nuevo disco
             Size++;
         }
 
@@ -36,7 +35,7 @@ namespace Torres_de_Hanoi
             Elementos[Top]) = null; //Eliminamos disco
             //actualizar tamanos
             Size--;
-            Top--
+            Top--;
             return d; //devolvemos disco
         }                
 
