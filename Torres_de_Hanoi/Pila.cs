@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +15,11 @@ namespace Torres_de_Hanoi
         public Disco[] Elementos { get; set; };
 
         /* TODO: Implementar métodos */
-        public Pila(int size, int top, Disco[] )
+        public Pila(int top, Disco[] discos )
         {
-
+            Top.this = top;
+            Elementos = discos; 
+            Size = Elementos.Length;
         }
 
         public void push(Disco d)
