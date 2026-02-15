@@ -12,24 +12,24 @@ namespace Torres_de_Hanoi
         public void mover_disco(Pila a, Pila b)
         {
 
-            if (a.isEmpty == false ) {
+            if (a.isEmpty() == false ) {
                 
-                if (b.isEmpty == false) {
+                if (b.isEmpty() == false) {
 
                     if (a.Elementos[a.Top].Tamano < b.Elementos[b.Top].Tamano)
                     {
-                        b.push(a.pop);
+                        b.push(a.pop());
                     }
                 }
-                else { b.push(a.pop); }                   
+                else { b.push(a.pop(); }                   
             }
-            
+
         }
 
         public int iterativo(int n, Pila ini, Pila fin, Pila aux)
         {
             int m = 0;
-            if(n%2 = 0)
+            if(n%2 == 0)
             {
                 for (int i = 0; i < Math.Pow(2,n)-1; i++)
                 {
@@ -47,7 +47,7 @@ namespace Torres_de_Hanoi
             }
             else if (n % 2 != 0)
             {
-                for (int i = 0; i < 2 ^ n - 1; i++)
+                for (int i = 0; i < Math.Pow(2, n) - 1; i++)
                 {
                     mover_disco(ini, aux);
                     m++;
