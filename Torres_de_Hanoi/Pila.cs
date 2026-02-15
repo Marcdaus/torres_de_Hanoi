@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Torres_de_Hanoi;
 
 namespace Torres_de_Hanoi
 {
@@ -14,7 +15,7 @@ namespace Torres_de_Hanoi
         public Disco[] Elementos { get; set; };
 
         /* TODO: Implementar métodos */
-        public Pila()
+        public Pila(int size, int top, Disco[] )
         {
 
         }
@@ -26,13 +27,23 @@ namespace Torres_de_Hanoi
 
         public Disco pop()
         {
+            Elementos[top] = null;
+            Size-1
             return null;
         }                
 
         public bool isEmpty()
         {
-            return true;
+            if (Size == 0)
+            {
+                return true;
+        }else
+            {
+                return false;
+            }
+            
         }
 
     }
 }
+Pila pila1 { disco.tamano, Disco  }
