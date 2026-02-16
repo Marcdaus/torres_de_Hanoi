@@ -11,35 +11,29 @@ namespace Torres_de_Hanoi
         /*TODO: Implementar métodos*/
         public bool mover_disco(Pila a, Pila b)
         {
+            if (a.isEmpty() && b.isEmpty())
+                return false;
 
-            if (a.isEmpty() == false ) {
-                
-                if (b.isEmpty() == false) {
-
-                    if (a.Elementos[a.Top].Tamano < b.Elementos[b.Top].Tamano)
-                    {
-                        b.push(a.pop());
-                        return true;
-                    }
-                    else { a.push(b.pop());
-                        return true;
-                    }
-                }
-                else { b.push(a.pop());
-                    return true;
-                }                   
-            }
-            else if (b.isEmpty() == false)
+            if (a.isEmpty())
             {
                 a.push(b.pop());
-
-                return true;
+            }
+            else if (b.isEmpty())
+            {
+                b.push(a.pop());
+            }
+            else if (a.Elementos[a.Top].Tamano < b.Elementos[b.Top].Tamano)
+            {
+                b.push(a.pop());
+            }
+            else
+            {
+                a.push(b.pop());
             }
 
-            return false;
-           
-
+            return true;
         }
+
 
         public int iterativo(int n, Pila ini, Pila fin, Pila aux)
         {
