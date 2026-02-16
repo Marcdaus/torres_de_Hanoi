@@ -32,7 +32,7 @@ namespace Torres_de_Hanoi
         public Disco pop()
         {//sacar disco
             Disco d = Elementos[Top]; //guardamos disco
-            Elementos[Top]) = null; //Eliminamos disco
+            Elementos[Top] = null; //Eliminamos disco
             //actualizar tamanos
             Size--;
             Top--;
