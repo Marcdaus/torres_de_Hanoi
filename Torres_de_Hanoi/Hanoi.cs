@@ -12,23 +12,31 @@ namespace Torres_de_Hanoi
         public bool mover_disco(Pila a, Pila b)
         {
             if (a.isEmpty() && b.isEmpty())
+            {
+                Console.WriteLine("Las filas " + a.Name + " y " + b.Name + "están vacías, omitiendo movimiento.");
                 return false;
+            }
+
 
             if (a.isEmpty())
             {
                 a.push(b.pop());
+                Console.WriteLine("Moviendo " + b.Name + " a " + a.Name + "");
             }
             else if (b.isEmpty())
             {
                 b.push(a.pop());
+                Console.WriteLine("Moviendo " + a.Name + " a " + b.Name + "");
             }
             else if (a.Elementos[a.Top].Tamano < b.Elementos[b.Top].Tamano)
             {
                 b.push(a.pop());
+                Console.WriteLine("Moviendo " + a.Name + " a " + b.Name + "");
             }
             else
             {
                 a.push(b.pop());
+                Console.WriteLine("Moviendo " + b.Name + " a " + a.Name + "");
             }
 
             return true;

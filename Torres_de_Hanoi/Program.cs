@@ -66,9 +66,9 @@ namespace Torres_de_Hanoi
             int n = comprobar_Discos();
 
 
-            Pila ini = new Pila(n);
-            Pila aux = new Pila(n);
-            Pila fin = new Pila(n);
+            Pila ini = new Pila(n, "ini");
+            Pila aux = new Pila(n, "aux");
+            Pila fin = new Pila(n, "fin");
 
             // Crear discos del mayor al menor
             for (int i = n; i >= 1; i--)
