@@ -84,7 +84,7 @@ namespace Torres_de_Hanoi
             }
             else if (IoR_comp == "R")
             {
-                // movimientos = h.recursivo(n, ini, aux, fin);
+                 movimientos = h.Recursivo(n, ini, aux, fin);
             }
 
 

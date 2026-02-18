@@ -58,8 +58,8 @@ namespace Torres_de_Hanoi
         {
             // Obtenemos los tamaños de los discos y los unimos con comas
             var discos = Elementos.Take(Top + 1)
-                                 .Select(d => d.Tamano.ToString())
-                                 .Reverse(); // Reverse para mostrar el de arriba primero si prefieres
+                                 .Select(d => d.Tamano.ToString());
+                                 
 
             Console.WriteLine($"Torre {Name}: {string.Join(", ", discos)}");
         }
