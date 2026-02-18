@@ -14,6 +14,7 @@ namespace Torres_de_Hanoi
             if (a.isEmpty() && b.isEmpty())
             {
                 Console.WriteLine("Las filas " + a.Name + " y " + b.Name + "están vacías, omitiendo movimiento.");
+
                 return false;
             }
 
@@ -43,18 +44,29 @@ namespace Torres_de_Hanoi
         }
 
 
-        public int iterativo(int n, Pila ini, Pila fin, Pila aux)
+        public int iterativo(int n, Pila ini, Pila aux ,Pila fin)
         {
             int m = 0;
             int totalMov = (1 << n) - 1;
 
+            void ImprimirEstado(int mov)
+            {
+                Console.WriteLine($"\nsituación del movimiento {mov}");
+                ini.MostrarPila();
+                aux.MostrarPila();
+                fin.MostrarPila();
+                Console.WriteLine("---------------------------");
+            }
+
+            Console.WriteLine("Situcion inicial ");
             if (n % 2 == 0)
             {
+                
                 while (m < totalMov)
                 {
-                    if (mover_disco(ini, fin)) m++;
-                    if (m < totalMov && mover_disco(ini, aux)) m++;
-                    if (m < totalMov && mover_disco(aux, fin)) m++;
+                    if (mover_disco(ini, fin)) { m++; ImprimirEstado(m); }
+                    if (m < totalMov && mover_disco(ini, aux)) { m++; ImprimirEstado(m); }
+                    if (m < totalMov && mover_disco(aux, fin)) { m++; ImprimirEstado(m); }
                 }
             }
             else
@@ -68,7 +80,10 @@ namespace Torres_de_Hanoi
             }
 
             return m;
+
         }
+ 
+
 
 
     }

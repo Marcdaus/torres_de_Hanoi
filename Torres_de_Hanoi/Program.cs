@@ -64,7 +64,7 @@ namespace Torres_de_Hanoi
             Console.WriteLine("========================================================");
 
             int n = comprobar_Discos();
-
+            string IoR_comp = comprobar_IoR();
 
             Pila ini = new Pila(n, "ini");
             Pila aux = new Pila(n, "aux");
@@ -77,8 +77,7 @@ namespace Torres_de_Hanoi
             }
 
             Hanoi h = new Hanoi();
-            string IoR_comp = comprobar_IoR();
-
+            
             if (IoR_comp == "I")
             {
                 movimientos = h.iterativo(n, ini, aux, fin);

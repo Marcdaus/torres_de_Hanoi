@@ -24,7 +24,8 @@ namespace Torres_de_Hanoi
             this.Size = 0; //numero de discos en la pila
             this.Name = nombre; //nombre de la pila
         }
-
+        
+        
         public void push(Disco d)
         {
             Top++;
@@ -52,6 +53,15 @@ namespace Torres_de_Hanoi
                 return false;
             }
             
+        }
+        public void MostrarPila()
+        {
+            // Obtenemos los tamaños de los discos y los unimos con comas
+            var discos = Elementos.Take(Top + 1)
+                                 .Select(d => d.Tamano.ToString())
+                                 .Reverse(); // Reverse para mostrar el de arriba primero si prefieres
+
+            Console.WriteLine($"Torre {Name}: {string.Join(", ", discos)}");
         }
 
     }
