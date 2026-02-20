@@ -19,7 +19,7 @@ namespace Torres_de_Hanoi
         /* TODO: Implementar métodos */
         public Pila(int cant_max ,string nombre)
         {
-            this.Top = -1; //indicie del ultimo disco en la pila si es -1 no hay ningun disco
+            this.Top = -1; //indice del ultimo disco en la pila si es -1 no hay ningun disco
             this.Elementos = new Disco[cant_max] ; //definimos como de grande es la pila
             this.Size = 0; //numero de discos en la pila
             this.Name = nombre; //nombre de la pila

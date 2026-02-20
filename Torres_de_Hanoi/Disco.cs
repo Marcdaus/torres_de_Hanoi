@@ -8,8 +8,9 @@ namespace Torres_de_Hanoi
 {
     class Disco
     {
-
+        // Getters y Setters para el tamaño del disco
         public int Tamano { get; set; }
+
         // Constructor: se ejecuta al hacer 'new Disco(5)'
         public Disco(int tamano)
         {

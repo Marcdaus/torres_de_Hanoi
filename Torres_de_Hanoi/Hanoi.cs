@@ -85,7 +85,6 @@ namespace Torres_de_Hanoi
                 {
                     mover_disco(origen, destino);
                     movimientos++;
-                    // IMPORTANTE: Aquí usamos las pilas originales para mantener el orden visual
                     ImprimirEstado(movimientos, ini, aux, fin);
                 }
                 else
@@ -94,7 +93,7 @@ namespace Torres_de_Hanoi
 
                     mover_disco(origen, destino);
                     movimientos++;
-                    ImprimirEstado(movimientos, ini, aux, fin); // Orden fijo
+                    ImprimirEstado(movimientos, ini, aux, fin); 
 
                     Hanoi(discos - 1, auxiliar, origen, destino);
                 }
