@@ -49,51 +49,35 @@ namespace Torres_de_Hanoi
             int m = 0;
             int totalMov = (1 << n) - 1;
 
-            void ImprimirEstado(int mov)
-            {
-                Console.WriteLine($"\nsituación del movimiento {mov}");
-                ini.MostrarPila();
-                aux.MostrarPila();
-                fin.MostrarPila();
-                Console.WriteLine("---------------------------");
-            }
-
             Console.WriteLine("Situcion inicial ");
             if (n % 2 == 0)
             {
                 
                 while (m < totalMov)
                 {
-                    if (mover_disco(ini, aux)) { m++; ImprimirEstado(m); }
-                    if (m < totalMov && mover_disco(ini, fin)) { m++; ImprimirEstado(m); }
-                    if (m < totalMov && mover_disco(aux, fin)) { m++; ImprimirEstado(m); }
+                    if (mover_disco(ini, aux)) { m++; ImprimirEstado(m, ini, aux, fin); }
+                    if (m < totalMov && mover_disco(ini, fin)) { m++; ImprimirEstado(m, ini, aux, fin); }
+                    if (m < totalMov && mover_disco(aux, fin)) { m++; ImprimirEstado(m, ini, aux, fin); }
                 }
             }
             else
             {
                 while (m < totalMov)
                 {
-                    if (mover_disco(ini, fin)) { m++; ImprimirEstado(m); }
-                    if (m < totalMov && mover_disco(ini, aux)) { m++; ImprimirEstado(m); }
-                    if (m < totalMov && mover_disco(aux, fin)) { m++; ImprimirEstado(m); }
+                    if (mover_disco(ini, fin)) { m++; ImprimirEstado(m, ini, aux, fin); }
+                    if (m < totalMov && mover_disco(ini, aux)) { m++; ImprimirEstado(m, ini, aux, fin); }
+                    if (m < totalMov && mover_disco(aux, fin)) { m++; ImprimirEstado(m, ini, aux, fin); }
                 }
             }
 
             return m;
 
         }
+
+
         public int Recursivo(int n, Pila ini, Pila aux, Pila fin)
         {
             int movimientos = 0;
-
-            void ImprimirEstado(int mov)
-            {
-                Console.WriteLine($"\nsituación del movimiento {mov}");
-                ini.MostrarPila();
-                aux.MostrarPila();
-                fin.MostrarPila();
-                Console.WriteLine("---------------------------");
-            }
 
             void Hanoi(int discos, Pila origen, Pila auxiliar, Pila destino)
             {
@@ -101,19 +85,17 @@ namespace Torres_de_Hanoi
                 {
                     mover_disco(origen, destino);
                     movimientos++;
-                    ImprimirEstado(movimientos);
+                    // IMPORTANTE: Aquí usamos las pilas originales para mantener el orden visual
+                    ImprimirEstado(movimientos, ini, aux, fin);
                 }
                 else
                 {
-                    // Paso 1: mover n-1 discos a auxiliar
                     Hanoi(discos - 1, origen, destino, auxiliar);
 
-                    // Paso 2: mover el disco mayor a destino
                     mover_disco(origen, destino);
                     movimientos++;
-                    ImprimirEstado(movimientos);
+                    ImprimirEstado(movimientos, ini, aux, fin); // Orden fijo
 
-                    // Paso 3: mover los n-1 discos desde auxiliar a destino
                     Hanoi(discos - 1, auxiliar, origen, destino);
                 }
             }
@@ -127,6 +109,15 @@ namespace Torres_de_Hanoi
             Hanoi(n, ini, aux, fin);
 
             return movimientos;
+        }
+
+        void ImprimirEstado(int mov, Pila ini, Pila aux, Pila fin)
+        {
+            Console.WriteLine($"\nsituación del movimiento {mov}");
+            ini.MostrarPila();
+            aux.MostrarPila();
+            fin.MostrarPila();
+            Console.WriteLine("---------------------------");
         }
 
 
