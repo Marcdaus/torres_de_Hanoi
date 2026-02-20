@@ -27,7 +27,7 @@ namespace Torres_de_Hanoi
             }
             else
             {
-                Console.WriteLine("Debes seleccionar I o R pruebade nuevo");
+                Console.WriteLine("Debes seleccionar I o R prueba de nuevo");
                 return comprobar_IoR();
                
             }
@@ -35,23 +35,29 @@ namespace Torres_de_Hanoi
         }
         static public int comprobar_Discos()
         {
-
-            Console.WriteLine("¿Cuantos discos quieres?");
-
             int n;
-            bool esNumero = int.TryParse(Console.ReadLine(), out n);
 
-            if (esNumero)
+            while (true)
             {
-                return n;
-            }
-            else
-            {
-                Console.WriteLine("Debes seleccionar un numero");
-                return comprobar_Discos();
+                Console.WriteLine("¿Cuántos discos quieres?");
+                string entrada = Console.ReadLine();
 
+                if (int.TryParse(entrada, out n))
+                {
+                    if (n > 0)
+                    {
+                        return n;
+                    }
+                    else
+                    {
+                        Console.WriteLine("El número debe ser mayor que 0.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Debes introducir un número válido.");
+                }
             }
-
         }
         static public void program()
         {
