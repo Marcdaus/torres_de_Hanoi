@@ -11,25 +11,26 @@ namespace Torres_de_Hanoi
         /*TODO: Implementar métodos*/
         public bool mover_disco(Pila a, Pila b)
         {
-            if (a.isEmpty() && b.isEmpty())
+            if (a.isEmpty() && b.isEmpty()) //comprueba que ninguna de las pilas este vacia
             {
+                //mensaje de error
                 Console.WriteLine("Las filas " + a.Name + " y " + b.Name + "están vacías, omitiendo movimiento.");
 
                 return false;
             }
 
 
-            if (a.isEmpty())
+            if (a.isEmpty())//comprueba que la pila a este vacia
             {
-                a.push(b.pop());
+                a.push(b.pop());//mueve de la b a la a
                 Console.WriteLine("Moviendo " + b.Name + " a " + a.Name + "");
             }
-            else if (b.isEmpty())
+            else if (b.isEmpty())//comprueba que la pila b este vacia
             {
-                b.push(a.pop());
+                b.push(a.pop()); //mueve de la a a la b
                 Console.WriteLine("Moviendo " + a.Name + " a " + b.Name + "");
             }
-            else if (a.Elementos[a.Top].Tamano < b.Elementos[b.Top].Tamano)
+            else if (a.Elementos[a.Top].Tamano < b.Elementos[b.Top].Tamano) //Comprueba el tamño del a frente al del b
             {
                 b.push(a.pop());
                 Console.WriteLine("Moviendo " + a.Name + " a " + b.Name + "");
@@ -58,7 +59,8 @@ namespace Torres_de_Hanoi
                 while (m < totalMov)
                 {
                     //llama a mover discos en el orden de par
-                    if (mover_disco(ini, aux)) { m++; ImprimirEstado(m, ini, aux, fin); } 
+                    if (mover_disco(ini, aux)) { m++; ImprimirEstado(m, ini, aux, fin); }
+                    // m < totalMov sirve para controlar que no haga movimientos de mas
                     if (m < totalMov && mover_disco(ini, fin)) { m++; ImprimirEstado(m, ini, aux, fin); }
                     if (m < totalMov && mover_disco(aux, fin)) { m++; ImprimirEstado(m, ini, aux, fin); }
                 }
@@ -67,6 +69,7 @@ namespace Torres_de_Hanoi
             {
                 while (m < totalMov)
                 {
+                    //llama a mover discos en el orden de inpar
                     if (mover_disco(ini, fin)) { m++; ImprimirEstado(m, ini, aux, fin); }
                     if (m < totalMov && mover_disco(ini, aux)) { m++; ImprimirEstado(m, ini, aux, fin); }
                     if (m < totalMov && mover_disco(aux, fin)) { m++; ImprimirEstado(m, ini, aux, fin); }
