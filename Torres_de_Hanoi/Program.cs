@@ -10,8 +10,12 @@ namespace Torres_de_Hanoi
     {
         static void Main(string[] args)
         {
+            // Llamada a la función que comienza el programa y de manera recursiva se vuelve a llamar para jugar de nuevo
             program();
         }
+
+        // Esta función comprueba si el usuario ha escrito correctamente para elegir el modo iterativo o recursivo
+        // Y de manera recursiva vuelve ha llamarse en caso de error
         static public string comprobar_IoR()
         {
             Console.WriteLine("¿Para iterativo escrive I y para recursivo R ?");
@@ -33,6 +37,10 @@ namespace Torres_de_Hanoi
             }
              
         }
+
+        // Esta función comprueba si se introduce un numero "valido"
+        // Tiene que ser un numero entero y mayor que 0
+        // En caso de error se vuelve a llamar de manera recursiva
         static public int comprobar_Discos()
         {
             int n;
@@ -59,16 +67,19 @@ namespace Torres_de_Hanoi
                 }
             }
         }
+
+        // Esta es la función principal que inicia el programa, inicializa las variables
+        // y llama a las funciones para ejercutar Hanoi
         static public void program()
         {
+            // Limpiamos la consola, para que cada vez que vuelvas a jugar se vea limpio
             Console.Clear();
-            //Variables
-            int movimientos = 0;
 
             Console.WriteLine("========================================================");
             Console.WriteLine("              Bienvenido a las torres de hanoi          ");
             Console.WriteLine("========================================================");
 
+            int movimientos = 0;
             int n = comprobar_Discos();
             string IoR_comp = comprobar_IoR();
 
@@ -93,14 +104,13 @@ namespace Torres_de_Hanoi
                  movimientos = h.Recursivo(n, ini, aux, fin);
             }
 
-
+            // Mostramos los movimientos realizados al final
             Console.WriteLine("Movimientos realizados: " + movimientos);
-
+            // Si quiere volver a jugar escribe E y comienza de nuevo, sino se cierra el programa
             Console.WriteLine("Presiona E para volver a jugar y cualquier tecla para cerrar");
             string volver = Console.ReadLine();
             if (volver.ToUpper() == "E")
             {
-                
                 program();
             } 
             
